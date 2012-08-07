@@ -23,7 +23,7 @@
 */
 
 /*
-    arguee lets you check arguments' type
+    Arguee lets you check types and function arguments
 
     Usage:
 
