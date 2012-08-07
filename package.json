@@ -1,0 +1,15 @@
+{
+  "name": "arguee",
+  "version": "0.0.1",
+  "description": "Arguee lets you check types and function arguments",
+  "main": "arguee.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "cd test; make"
+  },
+  "repository": "",
+  "author": "Thierry Passeron",
+  "license": "MIT"
+}
