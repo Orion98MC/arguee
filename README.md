@@ -2,6 +2,18 @@
 
 Arguee lets you check types and function arguments
 
+## Install
+
+```
+$ npm install -g arguee
+```
+
+Or
+
+```
+$ git clone git://github.com/Orion98MC/arguee.git
+```
+
 ## Usage
 
 Check function arguments:

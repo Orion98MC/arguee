@@ -9,7 +9,10 @@
   "scripts": {
     "test": "cd test; make"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Orion98MC/arguee.git"
+  },
   "author": "Thierry Passeron",
   "license": "MIT"
 }
