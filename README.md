@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/Orion98MC/arguee.png)](http://travis-ci.org/Orion98MC/arguee)
 # Description
 
 Arguee lets you check types and function arguments
