@@ -2,18 +2,6 @@
 
 Arguee lets you check types and function arguments
 
-## Install
-
-```
-$ npm install -g arguee
-```
-
-Or
-
-```
-$ git clone git://github.com/Orion98MC/arguee.git
-```
-
 ## Usage
 
 Check function arguments:
@@ -58,6 +46,79 @@ var address;
 if (isa(String, name)) { /* ... */ }
 if (isa(Array, address)) { /* ... */ }
 
+```
+
+Since an Array is also an Object, you may wish to distinguish them by using the Strict() method:
+```js
+
+var Strict = require('arguee').Strict;
+
+isa(Object, []); //=> true
+isa(Strict(Object), []); //=> false
+
+isa(Object, {}); //=> true
+isa(Strict(Object), {}); //=> true
+
+```
+
+Same applies to conformed:
+```js
+
+var Strict = require('arguee').Strict;
+
+conformed([String, Object, Number], ["Hello", [1, 2, 3], 1234]); //=> true
+conformed([String, Strict(Object), Number], ["Hello", [1, 2, 3], 1234]); //=> false
+
+conformed([String, Object, Number], ["Hello", {world: true}, 1234]); //=> true
+conformed([String, Strict(Object), Number], ["Hello", {world: true}, 1234]); //=> true
+```
+
+### Default values
+
+You may pass an extra Object argument to //conformed// to define default values of undefined or null arguments:
+
+```js
+{ defaults: { <arg-index>: <value>, ... }}
+```
+
+Example:
+```js
+
+conformed([String, Number, Function], ["Foo", 1234], { defaults: { 2: function missing() {} } });
+//=> ["Foo", 1234, [Function missing]]
+
+```
+
+### Shallow arguments
+
+You may use the shallow arguments feature to provide a flexible arguments handling. This requires you to set the shallow option property to true and also provide the defaults property to use for the shallow arguments
+
+```js
+{ shallow: true, defaults: { <arg-index>: <value>, ... }}
+```
+
+Example:
+```js
+
+var options = { shallow: true, defaults: { 0: "Bar", 1: 123456789, 2: function missing() {} } };
+
+conformed([String, Number, Function], ["Foo", 1234], options);
+//=> ["Foo", 1234, [Function missing]]
+
+conformed([String, Number, Function], [1234], options);
+//=> ["Bar", 1234, [Function missing]]
+
+conformed([String, Number, Function], [], options);
+//=> ["Bar", 123456789, [Function missing]]
+
+```
+
+### Verbosity
+
+Sometimes to debug the arguments checking it is useful to set conformed in verbose mode by setting the verbose option to something trueful:
+
+```js
+conformed(format, args, { verbose: true })
 ```
 
 ## License terms
